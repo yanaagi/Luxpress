@@ -1,3 +1,4 @@
+/* RESET */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,11 +10,16 @@ body {
   color: #3E3E3E;
 }
 
-/* HEADER */
+/* =====================
+   HEADER
+===================== */
 .header {
   background: white;
   border-bottom: 1px solid #eee;
+  position: relative;
+  z-index: 10;
 }
+
 .header-inner {
   max-width: 1400px;
   margin: auto;
@@ -22,16 +28,19 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
 .search {
   padding: 10px 16px;
   border-radius: 100px;
   border: 1px solid #ABABAB;
 }
+
 .logo span {
   display: block;
   letter-spacing: 12px;
   font-size: 14px;
 }
+
 .avatar {
   width: 52px;
   height: 52px;
@@ -39,40 +48,74 @@ body {
   border-radius: 50%;
 }
 
-/* HERO */
+/* =====================
+   HERO (VIDEO BANNER)
+===================== */
 .hero {
   position: relative;
   height: 100vh;
+  overflow: hidden;
 }
+
+/* VIDEO */
 .hero-bg {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 1;
 }
+
+/* LIGHT OVERLAY */
 .hero-overlay {
   position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.6);
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.65) 0%,
+    rgba(255,255,255,0.6) 55%,
+    rgba(255,255,255,0) 100%
+  );
+  z-index: 2;
 }
+
+/* CONTENT */
 .hero-content {
-  position: absolute;
+  position: relative;
+  z-index: 3;
+  max-width: 700px;
+  padding-left: 10%;
   top: 50%;
-  left: 10%;
   transform: translateY(-50%);
-  max-width: 600px;
 }
+
 .hero h1 {
-  font-family: "Crimson Pro";
+  font-family: "Crimson Pro", serif;
   font-size: 80px;
+  line-height: 1.1;
 }
+
 .hero h1 span {
   color: #D62E57;
 }
+
+.hero-content p {
+  margin-top: 20px;
+  max-width: 480px;
+  font-size: 16px;
+}
+
+/* ACTION BUBBLES */
 .hero-actions {
   display: flex;
   gap: 30px;
   margin-top: 40px;
 }
+
 .bubble {
   width: 180px;
   height: 180px;
@@ -83,63 +126,133 @@ body {
   text-align: center;
   font-weight: 600;
   letter-spacing: 3px;
+  cursor: pointer;
 }
+
 .bubble.dark {
   background: #EFEFEF;
   border: 2px solid #3E3E3E;
 }
+
 .bubble.light {
   background: white;
   border: 2px solid #3E3E3E;
 }
 
-/* VALUE PROPS */
+/* =====================
+   VALUE PROPS
+===================== */
 .value-props {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
   max-width: 1400px;
   margin: 120px auto;
   padding: 0 20px;
 }
+
 .value-card {
-  border: 2px solid #3E3E3E;
+  border: 0px solid #3E3E3E;
   padding: 40px;
 }
+
+.value-card img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain; /* keeps aspect ratio */
+  display: block;
+  margin-bottom: 20px; /* spacing under icon */
+}
+
 .value-card h4 {
-  font-family: Manrope;
+  font-family: Manrope, sans-serif;
   font-size: 26px;
   margin: 20px 0 10px;
 }
+
 .value-card p {
   color: #8D8D8D;
 }
 
-/* COLLECTION */
+/* =====================
+   COLLECTION
+===================== */
 .collection {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
+  align-items: center;
   max-width: 1400px;
   margin: 120px auto;
   padding: 0 20px;
 }
-.collection h3 {
-  font-family: "Crimson Text";
+
+/* HEADING WITH ICON */
+.collection-content h3 {
+  display: flex;
+  align-items: flex-start; /* icon aligns with first line */
+  gap: 20px;
+  font-family: "Crimson Text", serif;
   font-size: 60px;
   color: #D62E57;
+  line-height: 1.1;
 }
+
+.collection-image {
+margin-left: 90px;
+}
+
+/* ICON ONLY (inside h3) */
+.collection-content h3 > img {
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-top: 0px; /* fine-tuned vertical alignment */
+}
+
+/* TEXT */
+.collection-content p {
+  margin-top: 20px;
+  line-height: 1.6;
+  max-width: 620px;
+}
+
+/* BUTTON */
 .btn {
   margin-top: 30px;
   padding: 18px 40px;
-  font-family: "Crimson Text";
+  font-family: "Crimson Text", serif;
   font-size: 24px;
   border: 3px solid black;
   background: white;
   cursor: pointer;
 }
 
-/* CTA */
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 900px) {
+  .collection {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .collection-content h3 {
+    justify-content: center;
+    font-size: 44px;
+  }
+
+  .collection-content h3 > img {
+    margin-top: 0;
+  }
+}
+
+/* =====================
+   DUAL CTA
+===================== */
 .dual-cta {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -148,12 +261,15 @@ body {
   margin: 120px auto;
   padding: 0 20px;
 }
+
 .btn.red {
   border-color: #D62E57;
   color: #D62E57;
 }
 
-/* INFO CARDS */
+/* =====================
+   INFO CARDS
+===================== */
 .info-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -161,12 +277,14 @@ body {
   max-width: 1400px;
   margin: 120px auto;
 }
+
 .about-card {
   background: linear-gradient(180deg, black, #D62E57);
   color: white;
   padding: 60px;
   border-radius: 30px;
 }
+
 .newsletter {
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -174,9 +292,11 @@ body {
   border-radius: 30px;
   overflow: hidden;
 }
+
 .newsletter div {
   padding: 40px;
 }
+
 .newsletter input {
   width: 100%;
   border: none;
@@ -185,40 +305,67 @@ body {
   margin: 30px 0;
 }
 
-/* FINAL CTA */
+/* =====================
+   FINAL CTA
+===================== */
 .final-cta {
   background: linear-gradient(0deg, black, #D62E57);
   color: white;
   text-align: center;
   padding: 160px 20px;
 }
+
 .final-cta h2 {
   font-size: 120px;
-  font-family: "Crimson Text";
+  font-family: "Crimson Text", serif;
 }
+
 .cta-actions {
   display: flex;
   gap: 40px;
   justify-content: center;
   margin-top: 60px;
 }
+
 .pill {
   padding: 40px 80px;
   border-radius: 200px;
   font-size: 32px;
 }
+
 .pill.dark {
   background: black;
   color: white;
 }
+
 .pill.light {
   background: #ECE4FF;
   border: 3px solid black;
 }
 
-/* FOOTER */
+/* =====================
+   FOOTER
+===================== */
 .footer {
   background: #f4f4f4;
   padding: 40px;
   text-align: center;
+}
+
+/* =====================
+   RESPONSIVE HERO
+===================== */
+@media (max-width: 900px) {
+  .hero-content {
+    padding-left: 20px;
+    max-width: 90%;
+  }
+
+  .hero h1 {
+    font-size: 56px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
 }
