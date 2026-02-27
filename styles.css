@@ -380,6 +380,17 @@ height: 246px;
 }
 
 /* =====================
+   CENTER TEXT IN DUAL CTA BUTTONS
+===================== */
+
+.dual-cta a.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* =====================
    INFO CARDS
 ===================== */
 .info-cards {
@@ -498,49 +509,104 @@ padding-bottom: 25px;
   margin-top: 60px;
 }
 
+/* =====================
+   FINAL CTA (15% SMALLER)
+===================== */
+.final-cta {
+  position: relative;
+  max-width: 1360px; /* 1600 → 1360 */
+  margin: 0 auto 21px;
+
+  background-image:
+    linear-gradient(
+      0deg,
+      rgba(164, 34, 65, 0.75),
+      rgba(164, 34, 65, 0.75)
+    ),
+    url("./images/ad83f97728cba35d1274a12e82be05e09bb63634.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 26px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+
+  color: white;
+  text-align: center;
+
+  padding: 85px 51px; /* 100/60 → 85/51 */
+}
+
+.final-cta h2 {
+  width: 766px; /* 901 → 766 */
+  margin: 0 auto;
+
+  font-family: "Crimson Text";
+  font-size: 104px; /* 122 → 104 */
+  font-weight: 700;
+  line-height: 128.466%;
+  padding-bottom: 64px; /* 75 → 64 */
+}
+
+.final-cta p {
+  width: 809px; /* 952 → 809 */
+  margin: 0 auto;
+
+  font-family: "Red Hat Text";
+  font-size: 27px; /* 32 → 27 */
+  font-weight: 400;
+  line-height: 128.466%;
+  padding-bottom: 21px; /* 25 → 21 */
+}
+
+.cta-actions {
+  display: flex;
+  gap: 34px; /* 40 → 34 */
+  justify-content: center;
+  margin-top: 51px; /* 60 → 51 */
+}
+
+/* =====================
+   PILLS (15% SMALLER)
+===================== */
 .pill {
-  padding: 40px 80px;
-  border-radius: 200px;
-  font-size: 32px;
+  padding: 34px 68px; /* 40/80 → 34/68 */
+  border-radius: 170px;
+  font-size: 27px; /* 32 → 27 */
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
-
 }
 
 .pill:hover {
-  transform: translateY(-8px);
+  transform: translateY(-7px); /* 8 → 7 */
+}
+
+.pill.dark,
+.pill.light {
+  width: 485px;  /* 571 → 485 */
+  height: 128px; /* 151 → 128 */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Inter;
+  font-size: 34px; /* 40 → 34 */
+  font-weight: 600;
+  border-radius: 170px;
 }
 
 .pill.dark {
-  width: 571px;
-  height: 151px;
-
   background: black;
   color: #FFF;
-
-  display: flex;
-  align-items: center;     /* vertical centering */
-  justify-content: center; /* horizontal centering */
-
-  text-align: center;
-  font-family: Inter;
-  font-size: 40px;
-  font-weight: 600;
-
-  border-radius: 200px; /* pill shape */
 }
 
 .pill.light {
   background: #ECE4FF;
   border: 3px solid black;
-  width: 571px;
-color: #000;
-text-align: center;
-font-family: Inter;
-font-size: 40px;
-font-style: normal;
-font-weight: 600;
-line-height: 128.466%; /* 51.386px */
+  color: #000;
+  line-height: 128.466%;
 }
 
 /* =====================
@@ -630,6 +696,16 @@ text-decoration: none;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+/* =====================
+   REMOVE CTA UNDERLINE
+===================== */
+
+a.btn,
+a.bubble,
+a.pill {
+  text-decoration: none;
 }
 
 /* =====================
