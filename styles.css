@@ -392,6 +392,12 @@ width: 100%;
   text-align: center;
 }
 
+@media (max-width: 600px) {
+  .dual-cta a.btn {
+    margin-top: 0;
+  }
+}
+
 /* =====================
    INFO CARDS
 ===================== */
