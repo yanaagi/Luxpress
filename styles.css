@@ -127,16 +127,40 @@ body {
   font-weight: 600;
   letter-spacing: 3px;
   cursor: pointer;
+  line-height: 1.4;
+  font-size: 14px;
+  background: #fff;
+  transition: all 0.35s ease;
+
+  /* BACK SHADOW */
+  box-shadow: 10px 10px 0 #3E3E3E;
 }
 
+/* DEFAULT STATES */
 .bubble.dark {
   background: #EFEFEF;
   border: 2px solid #3E3E3E;
+  color: #3E3E3E;
 }
 
 .bubble.light {
-  background: white;
+  background: #ffffff;
   border: 2px solid #3E3E3E;
+  color: #3E3E3E;
+}
+
+/* HOVER STATE — APPLIES TO BOTH */
+.bubble.dark:hover,
+.bubble.light:hover {
+  background: radial-gradient(
+    circle at top left,
+    #8b1d2c,
+    #5c0f1c
+  );
+  border-color: #5c0f1c;
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(92, 15, 28, 0.4);
 }
 
 /* =====================
@@ -152,8 +176,24 @@ body {
 }
 
 .value-card {
-  border: 0px solid #3E3E3E;
+  position: relative;
+
   padding: 40px;
+  background: #ffffff;
+
+  border: 3px solid transparent;
+  border-radius: 6px;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.value-card:hover {
+  border-color: #D62E57;
+
+  box-shadow:
+    8px 8px 0px rgba(214, 46, 87, 0.9); /* “card behind” effect */
 }
 
 .value-card img {
@@ -231,11 +271,75 @@ height: 246px;
 .btn {
   margin-top: 30px;
   padding: 18px 40px;
+
   font-family: "Crimson Text", serif;
   font-size: 24px;
-  border: 3px solid black;
-  background: white;
+  font-weight: 600;
+
+  background-color: white;          /* outline state */
+  color: #000;
+
+  border: 3px solid #000;
+  border-radius: 4px;
+
   cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn:hover {
+  background-color: #D62E57;  /* same pink */
+  color: #ffffff;
+  border-color: #D62E57;
+}
+
+/* =====================
+   CATALOG HIGHLIGHT
+===================== */
+
+.catalog-highlight {
+  max-width: 1400px;
+  margin: 0 auto 120px;
+  padding: 0 20px;
+}
+
+/* Top line */
+.section-line {
+  width: 370px;
+  height: 2px;
+  background: #000;
+  margin: 0 auto 60px;
+}
+
+/* Main layout */
+.catalog-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Left text */
+.catalog-text h2 {
+  font-family: "Crimson Pro", serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+
+/* Right image */
+.catalog-image {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Bottom CTAs */
+.catalog-ctas {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 80px;
 }
 
 /* =====================
@@ -293,12 +397,27 @@ height: 246px;
   border-radius: 30px;
 }
 
+.about-card h3 {
+color: #FFF;
+text-align: center;
+font-family: "Crimson Text";
+font-size: 48px;
+font-style: normal;
+font-weight: 700;
+line-height: 128.466%; /* 61.664px */
+}
+
 .newsletter {
   display: grid;
   grid-template-columns: 320px 1fr;
   border: 3px solid #D62E57;
   border-radius: 30px;
   overflow: hidden;
+}
+.newsletter img {
+  width: 300px;        /* make image smaller */
+  height: auto;        /* keep proportions */
+  object-fit: cover;
 }
 
 .newsletter div {
@@ -318,10 +437,33 @@ height: 246px;
    FINAL CTA
 ===================== */
 .final-cta {
-  background: linear-gradient(0deg, black, #D62E57);
+  position: relative;
+
+  max-width: 1600px;
+  margin: 0 auto;
+
+  /* Background image + 75% overlay */
+  background-image:
+    linear-gradient(
+      0deg,
+      rgba(164, 34, 65, 0.75),
+      rgba(164, 34, 65, 0.75)
+    ),
+    url("./images/ad83f97728cba35d1274a12e82be05e09bb63634.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 30px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+
   color: white;
   text-align: center;
-  padding: 160px 20px;
+
+  /* NORMAL card sizing */
+  padding: 100px 60px;
+  margin-bottom: 25px;
 }
 
 .final-cta h2 {
@@ -360,6 +502,13 @@ padding-bottom: 25px;
   padding: 40px 80px;
   border-radius: 200px;
   font-size: 32px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+
+}
+
+.pill:hover {
+  transform: translateY(-8px);
 }
 
 .pill.dark {
