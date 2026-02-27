@@ -570,31 +570,34 @@ padding-bottom: 25px;
 /* =====================
    PILLS (15% SMALLER)
 ===================== */
+/* =====================
+   PILLS (30% SMALLER)
+===================== */
 .pill {
-  padding: 34px 68px; /* 40/80 → 34/68 */
-  border-radius: 170px;
-  font-size: 27px; /* 32 → 27 */
+  padding: 24px 48px;          /* 34/68 → ~24/48 */
+  border-radius: 120px;        /* 170 → 120 */
+  font-size: 19px;             /* 27 → ~19 */
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
 }
 
 .pill:hover {
-  transform: translateY(-7px); /* 8 → 7 */
+  transform: translateY(-5px); /* 7 → 5 */
 }
 
 .pill.dark,
 .pill.light {
-  width: 485px;  /* 571 → 485 */
-  height: 128px; /* 151 → 128 */
+  width: 340px;                /* 485 → ~340 */
+  height: 90px;                /* 128 → ~90 */
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   font-family: Inter;
-  font-size: 34px; /* 40 → 34 */
+  font-size: 24px;             /* 34 → ~24 */
   font-weight: 600;
-  border-radius: 170px;
+  border-radius: 120px;
 }
 
 .pill.dark {
